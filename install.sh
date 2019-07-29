@@ -26,8 +26,13 @@ id -u "$m_username" &>/dev/null || \
 usermod -aG sudo "$m_username"
 
 # Execute the rest of the script as the newly created user
-exec sudo -u "$m_username" /bin/bash - << eof
 
+# TODO writing the script as a heredoc and then executing it via `runuser`
+# feels like a hack
+
+tmp_script_path="/tmp/tmp_script.sh"
+
+cat << EOF > "$tmp_script_path"
 set -e
 
 # Target the user's home directory instead of the default
@@ -75,7 +80,13 @@ ln -s -f .tmux/.tmux.conf
 # Install spacemacs
 # spacemacs.org
 mclone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+EOF
 
-eof
+chmod +x "$tmp_script_path"
+
+runuser -l "$m_username" -c "$tmp_script_path"
+
+# TODO ensure this command gets executed
+rm "$tmp_script_path"
 
 # TODO log the name of the user created and how to set password
