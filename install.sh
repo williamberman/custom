@@ -2,6 +2,32 @@
 
 set -e
 
+# In progress bootstrap. Only works on debian
+# Run as root
+
+add-apt-repository -y ppa:kelleyk/emacs
+apt-get update
+# Remove old versions of emacs
+apt remove --autoremove -y emacs emacs-nox
+# TODO should probably have a method of determining to install
+# emacs or emacs-nox
+apt-get install -y \
+        python-pip \
+        stow \
+        zsh \
+        emacs26
+pip install Pygments
+
+m_username="wlbberman"
+
+adduser --shell $(which zsh) --gecos "" "$m_username"
+usermod -aG sudo "$m_username"
+
+# Execute the rest of the script as the newly created user
+exec sudo -u "$m_username" /bin/bash - << eof
+
+set -e
+
 # Target the user's home directory instead of the default
 # parent directory
 mstow() {
@@ -48,5 +74,4 @@ ln -s -f .tmux/.tmux.conf
 # spacemacs.org
 mclone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
-# Set the default shell to zsh
-sudo usermod --shell $(which zsh) $(whoami)
+eof
