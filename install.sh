@@ -1,5 +1,7 @@
 #! /bin/bash
 
+set -e
+
 # TODO
 # In progress bootstrap
 #
