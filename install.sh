@@ -11,6 +11,7 @@ apt-get update
 apt remove --autoremove -y emacs emacs-nox
 # TODO should probably have a method of determining to install
 # emacs or emacs-nox
+# TODO should install tmux (as latest version potentially)
 apt-get install -y \
         python-pip \
         stow \
@@ -20,7 +21,8 @@ pip install Pygments
 
 m_username="wlbberman"
 
-adduser --shell $(which zsh) --gecos "" "$m_username"
+# TODO this should be declarative
+adduser --diabled-password --shell $(which zsh) --gecos "" "$m_username"
 usermod -aG sudo "$m_username"
 
 # Execute the rest of the script as the newly created user
@@ -75,3 +77,5 @@ ln -s -f .tmux/.tmux.conf
 mclone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
 eof
+
+# TODO log the name of the user created and how to set password
