@@ -21,8 +21,8 @@ pip install Pygments
 
 m_username="wlbberman"
 
-# TODO this should be declarative
-adduser --disabled-password --shell $(which zsh) --gecos "" "$m_username"
+id -u "$m_username" &>/dev/null || \
+    adduser --disabled-password --shell $(which zsh) --gecos "" "$m_username"
 usermod -aG sudo "$m_username"
 
 # Execute the rest of the script as the newly created user
