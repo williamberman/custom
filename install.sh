@@ -47,3 +47,6 @@ ln -s -f .tmux/.tmux.conf
 # Install spacemacs
 # spacemacs.org
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+
+# Set the default shell to zsh
+sudo usermod --shell $(which zsh) $(whoami)
