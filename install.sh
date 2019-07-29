@@ -29,25 +29,31 @@ usermod -aG sudo "$m_username"
 
 # TODO writing the script as a heredoc and then executing it via `runuser`
 # feels like a hack
+#
+# All `$`'s inside the heredoc must be escaped
 
 tmp_script_path="/tmp/tmp_script.sh"
 
 cat << EOF > "$tmp_script_path"
+#! /bin/bash
+
 set -e
 
 # Target the user's home directory instead of the default
 # parent directory
 mstow() {
-    stow -t "$HOME" $@
+    stow -t "\$HOME" \$@
 }
 
 # Clone the repo if it exists, else pull it
 # https://gist.github.com/nicferrier/2277987
 mclone() {
-    local REPOSRC="$1"
-    local LOCALREPO="$2"
-    git clone "$REPOSRC" "$LOCALREPO" || (cd "$LOCALREPO" ; git pull)
+    local REPOSRC="\$1"
+    local LOCALREPO="\$2"
+    git clone "\$REPOSRC" "\$LOCALREPO" || (cd "\$LOCALREPO" ; git pull)
 }
+
+cd ~
 
 # Preferred directory structure
 mkdir -p {git/personal,tmp,bin}
@@ -55,7 +61,6 @@ mkdir -p {git/personal,tmp,bin}
 # Install dot files
 mclone https://github.com/williamberman/custom ~/git/personal/custom
 cd ~/git/personal/custom/dotfiles
-
 # TODO there should be some way to say just do all the folders in the current directory
 mstow {emacs,info,tmux,vim}
 
@@ -63,7 +68,7 @@ cd ~
 
 # Install oh my zsh
 # https://github.com/robbyrussell/oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "\$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # Installing oh my zsh will overwrite ~/.zshrc, so the stow has to occur after
 # installation
