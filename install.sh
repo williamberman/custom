@@ -28,4 +28,5 @@ mstow() {
     stow -t "$HOME" $@
 }
 
+# TODO there should be some way to say just do all the folders in the current directory
 mstow {emacs,info,tmux,vim,zsh}
