@@ -21,4 +21,11 @@ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 # Install dot files
 git clone https://github.com/williamberman/custom ~/git/personal/custom
 cd ~/git/personal/custom/dotfiles
-stow
+
+# Target the user's home directory instead of the default
+# parent directory
+mstow() {
+    stow -t "$HOME" $@
+}
+
+mstow {emacs,info,tmux,vim,zsh}
