@@ -68,6 +68,7 @@ cd ~
 
 # Install oh my zsh
 # https://github.com/robbyrussell/oh-my-zsh
+# TODO for some reason this drops down into a zsh shell on the installing user's account
 sh -c "\$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # Installing oh my zsh will overwrite ~/.zshrc, so the stow has to occur after
@@ -94,4 +95,4 @@ runuser -l "$m_username" -c "$tmp_script_path"
 # TODO ensure this command gets executed
 rm "$tmp_script_path"
 
-# TODO log the name of the user created and how to set password
+echo "$m_username created successfully. To set password run `passwd $m_username` with root permissions"
