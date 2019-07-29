@@ -2,33 +2,26 @@
 
 set -e
 
-# TODO
-# In progress bootstrap
-#
-# Debian
-# sudo add-apt-repository -y ppa:kelleyk/emacs
-# sudo apt-get update
-# # Remove old versions of emacs
-# sudo apt remove --autoremove -y emacs emacs-nox
-# # TODO should probably have a method of determining to install
-# # emacs vs emacs-nox instead of doing both
-# sudo apt-get install -y python-pip stow zsh emacs26 emacs26-nox
-# pip install Pygments
-#
-# MacOS is different
-
-# Preferred directory structure
-mkdir -p {git/personal,tmp,bin}
-
-# Install dot files
-git clone https://github.com/williamberman/custom ~/git/personal/custom
-cd ~/git/personal/custom/dotfiles
-
 # Target the user's home directory instead of the default
 # parent directory
 mstow() {
     stow -t "$HOME" $@
 }
+
+# Clone the repo if it exists, else pull it
+# https://gist.github.com/nicferrier/2277987
+mclone() {
+    local REPOSRC="$1"
+    local LOCALREPO="$2"
+    git clone "$REPOSRC" "$LOCALREPO" || (cd "$LOCALREPO" ; git pull)
+}
+
+# Preferred directory structure
+mkdir -p {git/personal,tmp,bin}
+
+# Install dot files
+mclone https://github.com/williamberman/custom ~/git/personal/custom
+cd ~/git/personal/custom/dotfiles
 
 # TODO there should be some way to say just do all the folders in the current directory
 mstow {emacs,info,tmux,vim,zsh}
@@ -41,12 +34,12 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 
 # Install oh my tmux
 # https://github.com/gpakosz/.tmux
-git clone https://github.com/gpakosz/.tmux.git
+mclone https://github.com/gpakosz/.tmux.git ~/.tmux
 ln -s -f .tmux/.tmux.conf
 
 # Install spacemacs
 # spacemacs.org
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+mclone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
 # Set the default shell to zsh
 sudo usermod --shell $(which zsh) $(whoami)
