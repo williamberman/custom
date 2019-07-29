@@ -24,13 +24,20 @@ mclone https://github.com/williamberman/custom ~/git/personal/custom
 cd ~/git/personal/custom/dotfiles
 
 # TODO there should be some way to say just do all the folders in the current directory
-mstow {emacs,info,tmux,vim,zsh}
+mstow {emacs,info,tmux,vim}
 
 cd ~
 
 # Install oh my zsh
 # https://github.com/robbyrussell/oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# Installing oh my zsh will overwrite ~/.zshrc, so the stow has to occur after
+# installation
+rm ~/.zshrc
+pushd ~/git/personal/custom/dotfiles
+mstow zsh
+popd
 
 # Install oh my tmux
 # https://github.com/gpakosz/.tmux
