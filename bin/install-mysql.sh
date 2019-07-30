@@ -24,3 +24,18 @@ mysql_secure_installation
 
 systemctl start mysql
 systemctl enable mysql
+
+# https://linuxize.com/post/how-to-create-mysql-user-accounts-and-grant-privileges/
+#
+# To create user. Execute the following in mysql.
+# CREATE USER '<username>'@'<hostname>' IDENTIFIED BY '<password>';
+#
+# For the hostname, use "localhost" to only be able to connect locally and "%" to connect from any host
+#
+# The user has to be given specific permissions on given databases
+#
+# i.e.
+# GRANT permission1, permission2 ON database_name.table_name TO 'database_user'@'localhost';
+#
+# For the common task of granting all permissions on a given database,
+# GRANT ALL PRIVILEGES on <database name>.* to '<username>'@'<hostname>';
