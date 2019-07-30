@@ -10,6 +10,10 @@ if false; then
     pushd /tmp
     curl -OL https://dev.mysql.com/get/mysql-apt-config_0.8.10-1_all.deb
     dpkg -i mysql-apt-config*
+    # For some reason the signing key is expired and needs to be readded.
+    # It may be searched for on keys.gnupg.net by prefixing the lower bytes
+    # with 0x
+    # apt-key adv --keyserver keys.gnupg.net --recv-keys 5072E1F5
     apt-get update
     rm mysql-apt-config*
     popd
