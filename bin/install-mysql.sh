@@ -1,5 +1,6 @@
 #! /bin/bash
 
+# Run with root privileges
 # Install, run, and enable (run on start up) mysql-server on debian
 
 set -e
@@ -25,17 +26,22 @@ mysql_secure_installation
 systemctl start mysql
 systemctl enable mysql
 
-# https://linuxize.com/post/how-to-create-mysql-user-accounts-and-grant-privileges/
+# To create and use a database,
+# CREATE DATABASE <database name>;
+# USE <database name>;
+
+# # https://linuxize.com/post/how-to-create-mysql-user-accounts-and-grant-privileges/
 #
-# To create user. Execute the following in mysql.
+# # To create user. Execute the following in mysql.
 # CREATE USER '<username>'@'<hostname>' IDENTIFIED BY '<password>';
 #
-# For the hostname, use "localhost" to only be able to connect locally and "%" to connect from any host
+# # For the hostname, use "localhost" to only be able to connect locally and "%" to connect from any host
 #
-# The user has to be given specific permissions on given databases
+# # The user has to be given specific permissions on given databases
 #
-# i.e.
+# # i.e.
 # GRANT permission1, permission2 ON database_name.table_name TO 'database_user'@'localhost';
 #
-# For the common task of granting all permissions on a given database,
+# # For the common task of granting all permissions on a given database,
+# # Do not quote the <database name>.* portion
 # GRANT ALL PRIVILEGES on <database name>.* to '<username>'@'<hostname>';
