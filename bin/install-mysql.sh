@@ -26,7 +26,7 @@ mysql_secure_installation
 systemctl start mysql
 systemctl enable mysql
 
-# To create and use a database,
+# # To create and use a database,
 # CREATE DATABASE <database name>;
 # USE <database name>;
 

@@ -22,3 +22,14 @@ apt-get install -y rabbitmq-server
 
 systemctl start rabbitmq-server
 systemctl enable rabbitmq-server
+
+# # https://www.rabbitmq.com/rabbitmqctl.8.html
+
+# # To create a user, execute with root permissions
+# rabbitmqctl add_user <username> <password>
+
+# # To create a vhost (similar to apache vhost)
+# rabbitmqctl add_vhost <vhost name>
+
+# # To give a user access to a vhost
+# rabbitmqctl set_permissions -p <vhost> <username> (see docs for specifying rest of permissions)
