@@ -1,5 +1,7 @@
 #! /bin/bash
 
+set -e
+
 # https://docs.docker.com/install/linux/docker-ce/ubuntu/
 # Run the following with root priviledges
 
