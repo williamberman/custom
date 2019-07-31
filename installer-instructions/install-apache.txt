@@ -13,3 +13,11 @@ Use a2ensite and a2dissite to enable and disable applications respectively
 
 Install mod_wsgi for python applications
 https://flask.palletsprojects.com/en/1.1.x/deploying/mod_wsgi/
+
+wsgi does not support multiple different python interpreters as the interpreter itself is embedded in the shared object.
+The solution is to pip install mod_wsgi and to then use the script mod_wsgi-express.
+
+Because this pip install does some compilation on the system, it requires the apache extension tool and the python headers.
+Which are in apache2-dev and python<version>-dev on ubuntu.
+
+The apache extension tool is part of the dev package which is apache2-dev on ubuntu

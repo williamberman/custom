@@ -1,0 +1,10 @@
+Gunicorn may be installed in the virtual env.
+
+Afterwards, it requires two services to be defined. One for the socket and one for the actual service itself. See http://docs.gunicorn.org/en/stable/deploy.html#systemd
+
+It should then be proxied to from a proper web server.
+
+/var/www/<app name>/
+  - venv
+  - code
+  - log
