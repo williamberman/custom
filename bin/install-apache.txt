@@ -1,0 +1,15 @@
+Initial installation
+https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-ubuntu-18-04-quickstart
+
+For a flask application
+https://flask.palletsprojects.com/en/1.1.x/deploying/mod_wsgi/
+
+https://stackoverflow.com/questions/10873295/error-message-forbidden-you-dont-have-permission-to-access-on-this-server
+Virtual hosts should have permission 755 on all folders and all files should have read permission for the serving user
+Add 755 for all folders
+`find <site root> -type d -exec chmod 755 {} \;`
+
+Use a2ensite and a2dissite to enable and disable applications respectively
+
+Install mod_wsgi for python applications
+https://flask.palletsprojects.com/en/1.1.x/deploying/mod_wsgi/

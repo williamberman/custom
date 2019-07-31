@@ -123,3 +123,6 @@ alias less="cless"
 alias cat="ccat"
 
 alias irb="rlwrap irb"
+
+# For python modules installed with pip
+export PATH="~/.local/bin:$PATH"
