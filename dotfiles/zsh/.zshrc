@@ -124,5 +124,8 @@ alias cat="ccat"
 
 alias irb="rlwrap irb"
 
+alias d="docker"
+alias dc="docker-compose"
+
 # For python modules installed with pip
 export PATH="~/.local/bin:$PATH"

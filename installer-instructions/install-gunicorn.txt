@@ -4,7 +4,8 @@ Afterwards, it requires two services to be defined. One for the socket and one f
 
 It should then be proxied to from a proper web server.
 
+TODO get a nice tree output here for this
 /var/www/<app name>/
-  - venv
   - code
+    - venv
   - log
