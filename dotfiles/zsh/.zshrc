@@ -129,3 +129,5 @@ alias dc="docker-compose"
 
 # For python modules installed with pip
 export PATH="~/.local/bin:$PATH"
+
+alias grep="ag"
