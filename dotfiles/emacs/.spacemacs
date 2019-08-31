@@ -327,6 +327,7 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq evil-escape-key-sequence "jk")
   (setq python-shell-interpreter "python3")
+  (spacemacs/set-leader-keys "kR" 'sp-rewrap-sexp)
   (define-key evil-normal-state-map (kbd "M-.") 'xref-find-definitions)
   (eval-after-load 'tide
     (progn
