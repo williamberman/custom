@@ -131,3 +131,5 @@ alias dc="docker-compose"
 export PATH="~/.local/bin:$PATH"
 
 alias grep="ag"
+
+alias guile="rlwrap guile"
