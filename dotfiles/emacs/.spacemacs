@@ -333,6 +333,7 @@ you should place your code here."
     (progn
       (setq typescript-indent-level 2)))
   (setq org-log-done nil)
+  (global-visual-line-mode)
   ;; TODO figure out the right command to map q to
   ;; :q should kill the current buffer rather than quitting emacs entirely
   ;; (evil-ex-define-cmd "q" 'kill-buffer-and-window)
