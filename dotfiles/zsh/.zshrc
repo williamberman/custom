@@ -111,7 +111,7 @@ export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PR
 
 alias j="emacs"
 
-export EDITOR=emacs
+export EDITOR="vi"
 alias magit="emacs -e '(progn (magit-status) (delete-other-windows))'"
 
 alias info="info --vi-keys"
@@ -130,6 +130,14 @@ alias dc="docker-compose"
 # For python modules installed with pip
 export PATH="~/.local/bin:$PATH"
 
-alias grep="ag"
-
 alias guile="rlwrap guile"
+
+alias vi="vim"
+alias vim="nvim"
+
+alias rm='rmtrash'
+alias rmdir='rmdirtrash'
+
+alias nb='npm run-script build'
+alias nt='npm test'
+
