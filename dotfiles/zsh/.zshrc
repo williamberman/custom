@@ -138,6 +138,8 @@ alias vim="nvim"
 alias rm='rmtrash'
 alias rmdir='rmdirtrash'
 
+alias nrs='npm run-script'
 alias nb='npm run-script build'
 alias nt='npm test'
 
+alias mitscheme="rlwrap /Applications/MIT:GNU\ Scheme\ 10.1.10.app/Contents/Resources/mit-scheme"
