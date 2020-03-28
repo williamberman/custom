@@ -72,7 +72,6 @@ plugins=(
     colorize
     colored-man-pages
     z
-    emacs
     tmux
 )
 
@@ -119,9 +118,6 @@ alias info="info --vi-keys"
 # Due to installing a newer version of info on mac
 export PATH="/usr/local/opt/texinfo/bin:$PATH"
 
-alias less="cless"
-alias cat="ccat"
-
 alias irb="rlwrap irb"
 
 alias d="docker"
@@ -142,4 +138,6 @@ alias nrs='npm run-script'
 alias nb='npm run-script build'
 alias nt='npm test'
 
-alias mitscheme="rlwrap /Applications/MIT:GNU\ Scheme\ 10.1.10.app/Contents/Resources/mit-scheme"
+alias 'mit-scheme'="rlwrap mit-scheme"
+
+eval $(opam env)
