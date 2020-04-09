@@ -1,6 +1,6 @@
 (package-initialize)
 
-;; On first startup, eval the bottom of this buffer, `package-refresh-contents', and `package-install-selected-packages'
+;; On first startup, eval the bottom of this buffer, `package-refresh-contents', `package-install-selected-packages', and then restart emacs
 
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)

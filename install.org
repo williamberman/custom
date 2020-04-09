@@ -1,0 +1,25 @@
+* install stow, emacs, zsh, tmux, python, pip
+
+#+begin_src sh
+sh -c "\$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+rm ~/.zshrc
+stow -t ~ dotfiles/zsh
+#+end_src
+
+#+begin_src sh
+git clone https://github.com/gpakosz/.tmux.git ~/.tmux
+ln -s -f .tmux/.tmux.conf
+stow -t ~ dotfiles/tmux
+#+end_src
+
+#+begin_src sh
+stow -t ~ dotfiles/info dotfiles/vim
+#+end_src
+
+#+begin_src sh
+stow -t ~/.emacs.d emacs
+#+end_src
+
+#+begin_src sh
+pip install Pygments
+#+end_src
