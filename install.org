@@ -1,25 +1,40 @@
-* install stow, emacs, zsh, tmux, python, pip
+* install stow, emacs, zsh, tmux, python, pip, curl, neovim
+
+#+BEGIN_SRC emacs-lisp
+(org-babel-do-load-languages
+ 'org-babel-load-languages '((shell . t)))
+#+END_SRC
 
 #+begin_src sh
-sh -c "\$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+set -e
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 rm ~/.zshrc
-stow -t ~ dotfiles/zsh
+cd dotfiles
+stow -t ~ zsh
 #+end_src
 
 #+begin_src sh
+set -e
 git clone https://github.com/gpakosz/.tmux.git ~/.tmux
+pushd ~
 ln -s -f .tmux/.tmux.conf
-stow -t ~ dotfiles/tmux
+popd
+cd dotfiles
+stow -t ~ tmux
 #+end_src
 
 #+begin_src sh
-stow -t ~ dotfiles/info dotfiles/vim
+set -e
+cd dotfiles
+stow -t ~ info vim
 #+end_src
 
 #+begin_src sh
+set -e
 stow -t ~/.emacs.d emacs
 #+end_src
 
 #+begin_src sh
+set -e
 pip install Pygments
 #+end_src
