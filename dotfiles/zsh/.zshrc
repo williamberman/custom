@@ -141,3 +141,5 @@ alias nt='npm test'
 alias 'mit-scheme'="rlwrap mit-scheme"
 
 eval $(opam env)
+
+export PATH="$PATH:/Applications/Racket v7.6/bin/"
