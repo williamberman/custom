@@ -38,3 +38,15 @@ stow -t ~/.emacs.d emacs
 set -e
 pip install Pygments
 #+end_src
+
+#+begin_src sh
+set -e
+# Requires trash-put to be installed (trash-cli package)
+wget https://raw.githubusercontent.com/PhrozenByte/rmtrash/master/rmtrash
+chmod +x rmtrash
+mv rmtrash ~/bin
+
+wget https://raw.githubusercontent.com/PhrozenByte/rmtrash/master/rmdirtrash
+chmod +x rmdirtrash
+mv rmdirtrash ~/bin
+#+end_src
