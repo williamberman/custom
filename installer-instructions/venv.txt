@@ -1,9 +1,0 @@
-https://realpython.com/python-virtual-environments-a-primer/
-
-virtualenv must be pip installed with python2
-venv is in the standard library of python3
-
-
-https://github.com/pypa/pipenv/issues/2922
-If virtualenv broken because it cant find the module distutils.spawn
-apt-get install python3-distutils
