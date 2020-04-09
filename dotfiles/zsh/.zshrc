@@ -106,30 +106,19 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
-
-alias j="emacs"
-
-export EDITOR="vi"
-alias magit="emacs -e '(progn (magit-status) (delete-other-windows))'"
-
-alias info="info --vi-keys"
-
-# Due to installing a newer version of info on mac
-export PATH="/usr/local/opt/texinfo/bin:$PATH"
-
-alias irb="rlwrap irb"
-
-alias d="docker"
-alias dc="docker-compose"
-
 # For python modules installed with pip
 export PATH="~/.local/bin:$PATH"
 
-alias guile="rlwrap guile"
-
+export EDITOR="vi"
 alias vi="vim"
 alias vim="nvim"
+
+alias irb="rlwrap irb"
+alias guile="rlwrap guile"
+alias 'mit-scheme'="rlwrap mit-scheme"
+
+alias d="docker"
+alias dc="docker-compose"
 
 alias rm='rmtrash'
 alias rmdir='rmdirtrash'
@@ -138,8 +127,21 @@ alias nrs='npm run-script'
 alias nb='npm run-script build'
 alias nt='npm test'
 
-alias 'mit-scheme'="rlwrap mit-scheme"
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     machine=Linux;;
+    Darwin*)    machine=Mac;;
+    CYGWIN*)    machine=Cygwin;;
+    MINGW*)     machine=MinGw;;
+    *)          machine="UNKNOWN:${unameOut}"
+esac
+
+case "${machine}" in
+	Mac)	source ./zshrc.mac;;
+esac
+
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
 eval $(opam env)
 
-export PATH="$PATH:/Applications/Racket v7.6/bin/"
+
