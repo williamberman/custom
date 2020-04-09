@@ -45,3 +45,7 @@
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
 
 (add-hook 'racket-mode-hook #'racket-xp-mode)
+
+(when (string-equal system-type "darwin")
+  (setq flycheck-python-pylint-executable "~/Library/Python/3.7/bin/pylint"))
+

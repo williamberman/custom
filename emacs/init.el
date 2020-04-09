@@ -1,5 +1,7 @@
 (package-initialize)
 
+;; On first startup, eval the bottom of this buffer, `package-refresh-contents', and `package-install-selected-packages'
+
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
@@ -35,7 +37,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(flycheck-python-pylint-executable "~/Library/Python/3.7/bin/pylint")
  '(package-selected-packages
    (quote
     (racket-mode slime flycheck magit yasnippet-snippets yasnippet company exec-path-from-shell haskell-mode ace-window counsel multiple-cursors rainbow-delimiters smartparens))))
