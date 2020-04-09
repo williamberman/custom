@@ -137,7 +137,7 @@ case "${unameOut}" in
 esac
 
 case "${machine}" in
-	Mac)	source ./zshrc.mac;;
+	Mac)	source ./.zshrc.mac;;
 esac
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
