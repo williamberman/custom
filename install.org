@@ -1,4 +1,4 @@
-* install stow, emacs, zsh, tmux, python, pip, curl, neovim
+* install stow, emacs, zsh, tmux, python, pip, curl, neovim, and powerline fonts
 
 #+BEGIN_SRC emacs-lisp
 (org-babel-do-load-languages
@@ -50,3 +50,17 @@ wget https://raw.githubusercontent.com/PhrozenByte/rmtrash/master/rmdirtrash
 chmod +x rmdirtrash
 mv rmdirtrash ~/bin
 #+end_src
+
+* remapping capslock to control and shift to alt
+* Gnome3 does not listen to xmodmap nor does it read /etc/default/keyboard
+* xkb is configured in /usr/share/X11/xkb
+* keycodes likely handles translation from the actual hardware to the symbol
+* modify the correct layout in symbol to map the symbol for left shift to the command for left alt
+#+begin_src
+* key <LFSH> { [Alt_L] };
+#+end_src
+* mapping caps lock to control is a setting enabled by the xkb-option 'ctrl:no_caps'. It must be set via 
+#+begin_src
+gsettings org.gnome.desktop.input-sources xkb-options ['ctrl:nocaps', <...>]
+#+end_src
+
